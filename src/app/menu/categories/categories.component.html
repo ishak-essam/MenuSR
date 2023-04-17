@@ -1,0 +1,11 @@
+<div class="portfolio">
+    <div class="imgs-container">
+        <div class="box" *ngFor="let item of Data" routerLink="{{item?.groupname}}">
+            <img [src]="item?.groupimage" alt="" />
+            <div class="caption">
+                <h4>{{ item.groupname }}</h4>
+                <!-- <p>Description</p> -->
+            </div>
+        </div>
+    </div>
+</div>

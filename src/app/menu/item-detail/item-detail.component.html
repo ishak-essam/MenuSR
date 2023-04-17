@@ -1,0 +1,138 @@
+<!-- <div class="item-detail">
+    <a class="back-btn" (click)="back()">Back </a>
+    <div class="item-image">
+        <img [src]="Item?.image" alt="{{ Item?.name }} " />
+    </div>
+    <div class="item-info">
+        <h1 class="item-name">{{ Item?.name }}</h1>
+        <p class="item-price">
+            {{ Item?.price | currency : "SAR " : "symbol" : "1.2-2" }}
+        </p>
+
+        <div class="quantity-controls">
+            <span>Quantity : </span>
+            <button (click)="decreaseQuantity()" class="quantity" [disabled]="quantity == 1">
+        -
+      </button>
+            <p>{{ quantity }}</p>
+            <button (click)="increaseQuantity()" class="quantity">+</button>
+        </div>
+        <button class="add-to-cart" (click)="AddToCart()">Add to Cart</button>
+    </div>
+</div> -->
+<div class="back-button-container">
+    <a (click)="back()" class="back-button">Back</a>
+</div>
+<div class="page-content">
+    <div class="content-body fb">
+        <div class="swiper-btn-center-lr my-0">
+            <div class="swiper-container demo-swiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                <div class="swiper-wrapper" id="swiper-wrapper-df82276c2cf58535" aria-live="off">
+                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="2 / 4">
+                        <div class="dz-banner-heading">
+                            <div class="overlay-black-light">
+                                <img [src]="Item?.image" alt="{{ Item?.name }} " class="bnr-img" alt="bg-image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-btn">
+                    <div class="swiper-pagination style-2 flex-1 swiper-pagination-clickable swiper-pagination-bullets">
+                        <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span
+            ><span
+              class="swiper-pagination-bullet swiper-pagination-bullet-active"
+              tabindex="0"
+              role="button"
+              aria-label="Go to slide 2"
+            ></span>
+                        <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span
+            ><span
+              class="swiper-pagination-bullet"
+              tabindex="0"
+              role="button"
+              aria-label="Go to slide 4"
+            ></span>
+                    </div>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="company-detail">
+                <div class="detail-content">
+                    <div class="flex-1">
+                        <h4>{{ Item?.name }}</h4>
+                        <p>
+                            {{ Item?.description }}
+                        </p>
+                    </div>
+                </div>
+                <!-- <ul class="item-inner">
+                    <li>
+                        <div class="reviews-info">
+                            <h6 class="reviews">4.5</h6>
+                        </div>
+                    </li>
+                    <li>
+                        <h6 class="mb-0 ms-2">6-7 Min</h6>
+                    </li>
+                    <li>
+                        <a class="d-flex delivery">
+                            <h6 class="mb-0 ms-2">FREE DELIVERY</h6>
+                        </a>
+                    </li>
+                </ul> -->
+            </div>
+            <div class="item-list-2">
+                <div class="price">
+                    <span class="text-style">Price</span>
+                    <h3>
+                        {{ Item?.price | currency : "SR " : "symbol" : "1.2-2" }}
+                        <del *ngIf="Item?.oldprice != 0.00">
+              {{ Item?.oldprice | currency : "SR " : "symbol" : "1.2-2" }}</del
+            >
+          </h3>
+        </div>
+        <div class="dz-stepper border-1 col-5">
+          <div
+            class="input-group bootstrap-touchspin bootstrap-touchspin-injected"
+          >
+            <span class="input-group-btn input-group-prepend">
+              <button
+                class="btn btn-primary bootstrap-touchspin-down"
+                (click)="decreaseQuantity()"
+                [disabled]="quantity == 1"
+                type="button"
+              >
+                -
+              </button></span
+            ><input
+              class="stepper form-control"
+              [(ngModel)]="quantity"
+              type="text"
+              value="3"
+              name="demo3"
+            /><span class="input-group-btn input-group-append"
+              ><button
+                class="btn btn-primary bootstrap-touchspin-up"
+                type="button"
+                (click)="increaseQuantity()"
+              >
+                +
+              </button></span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- <div class="d-flex align-items-center justify-content-between">
+        <div class="badge badge-danger font-w400 px-3">20% OFF DISCOUNT</div>
+        <a class="btn-link font-16">Apply promo code</a>
+      </div> -->
+    </div>
+  </div>
+</div>
+<div class="footer fixed">
+  <div class="container">
+    <a class="btn btn-primary text-start w-100 btn-rounded"> PLACE ORDER </a>
+  </div>
+</div>

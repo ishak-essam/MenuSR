@@ -1,0 +1,33 @@
+<div class="scroll-container">
+    <div class="page-content">
+        <div class="content-inner pt-0">
+            <div class="container fb">
+                <div class="dashboard-area">
+                    <div class="swiper-btn-center-lr">
+                        <div class="swiper-container mt-4 categorie-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide swiper-slide-next classall" style="margin-right: 15px" (click)="OutputCategory('all', 0)">
+                                    <!-- routerLink="categories/all"  -->
+                                    <div class="categore-box style-1">
+                                        <div class="icon-bx bg-primary">
+                                            <img [src]="Data[0]?.groupimage" width="35 " height="22 " alt=" " />
+                                        </div>
+                                        <span class="title">all</span>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide swiper-slide-next class{{ i }}" style="margin-right: 15px" (click)="OutputCategory(item, i)" *ngFor="let item of Data; let i = index">
+                                    <div class="categore-box style-1">
+                                        <div class="icon-bx bg-primary">
+                                            <img [src]="item?.groupimage" width="35" height="22" alt="" />
+                                        </div>
+                                        <span class="title">{{ item?.groupname }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

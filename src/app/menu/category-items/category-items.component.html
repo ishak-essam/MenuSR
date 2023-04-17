@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="item-list recent-jobs-list">
+        <h3 class="title my-4">{{ Category }}</h3>
+        <div class="back-button-container">
+            <a (click)="back()" class="back-button">Back</a>
+        </div>
+        <ul>
+            <div *ngFor="let item of Data">
+                <li *ngIf="item.groupname == Category || Category == 'all'">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <h6 class="item-title">
+                                    <a routerLink="{{ item.id }}">{{ item?.name }}</a>
+                                </h6>
+                                <div class="item-subtitle">{{ item?.groupname }}</div>
+                            </div>
+                            <div class="item-footer">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="me-3">
+                                        {{ item?.price | currency : "USD" : "symbol-narrow" : "1.2-2" }}
+                                    </h6>
+
+                                    <del class="off-text">
+                    <h6 *ngIf="item?.oldprice != '0.00'">
+                      {{
+                        item?.oldprice
+                          | currency : "USD" : "symbol-narrow" : "1.2-2"
+                      }}
+                    </h6></del
+                  >
+                </div>
+                <div class="d-flex align-items-center">
+                  <h6>4.5</h6>
+                </div>
+              </div>
+            </div>
+            <div class="item-media media media-90">
+              <img [src]="item?.image" alt="Pic" />
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

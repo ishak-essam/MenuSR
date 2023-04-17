@@ -1,0 +1,51 @@
+<!-- Start Select -->
+<app-select (CategoryOutput)="CategoryName($event)"></app-select>
+<!-- End Select -->
+<div class="container">
+    <div class="item-list recent-jobs-list">
+        <ul>
+            <div *ngFor="let item of Data">
+                <li *ngIf="item.groupname == CategorySearch.groupname
+                || CategorySearch == 'all'">
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <h6 class="item-title">
+                                    <a routerLink="categories/{{item.groupname}}/{{ item.id }}">{{ item?.name }}</a>
+                                </h6>
+                                <div class="item-subtitle">{{ item?.description }}</div>
+                            </div>
+                            <div class="item-footer">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="me-3">
+                                        {{ item?.price | currency : "SR " : "symbol-narrow" : "1.2-2" }}
+                                    </h6>
+
+                                    <del class="off-text">
+                  <h6 *ngIf=" item?.oldprice!='0.00'">
+                    {{
+                      item?.oldprice
+                        | currency : "SR " : "symbol-narrow" : "1.2-2"
+                    }}
+                  </h6></del
+                >
+              </div>
+              <div class="d-flex align-items-center">
+                <h6 *ngIf="  item?.kcal!=null">
+                  {{
+                    item?.kcal
+
+                  }} Kcal
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="item-media media media-90">
+            <img [src]="item?.image" alt="Pic" />
+          </div>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
+</div>

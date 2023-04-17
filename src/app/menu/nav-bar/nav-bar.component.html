@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="bg-sidenavOpen" id="bg-sidenavOpen"></div>
+    <div class="mynavbr">
+        <div class="MuiContainer-root MuiContainer-maxWidthLg css-1qsxih2">
+            <div class="mynavbar-parent">
+                <div class="logo"><img [src]="logo" alt="" /></div>
+                <ul class="links">
+                    <li class="navItem" routerLink=""><a class="navLink">Home</a></li>
+                    <li class="navItem">
+                        <a class="navLink" routerLink="/categories">Groups</a>
+                    </li>
+                    <li class="navItem"><a class="navLink">About </a></li>
+                    <li class="navItem" (click)="Languages()">
+                        <a class="navLink">Language </a>
+                        <div class="Lang">
+                            <div (click)="ChangeLang('En')"><img class="flag" src="../../../assets/Images/En.jpg" alt=""></div>
+                            <div (click)="ChangeLang('Ar')"><img class="flag" src="../../../assets/Images/AR.png" alt=""></div>
+                        </div>
+                    </li>
+                    <li class="navItem"><a class="navLink">Help</a></li>
+                </ul>
+                <div class="login">
+                    <a class="navLink">Login</a><a class="navLink">SignIn</a>
+                </div>
+                <div class="sidemenue-icon" (click)="SideBarShow()">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="Mysidebar" id="Mysidebar">
+                <button class="closeSideMenue" (click)="SideBarHide()">
+          <i class="fa fa-times"></i>
+        </button>
+                <div class="logo">
+                    <a href="/"><img [src]="logo" alt="None" /></a>
+                </div>
+                <ul class="list-sidebar">
+                    <li class="navItem" routerLink=""><a class="navLink">Home</a></li>
+                    <li class="navItem">
+                        <a class="navLink" routerLink="/categories">Groups</a>
+                    </li>
+                    <li class="navItem"><a class="navLink">About </a></li>
+                    <li class="navItem" (click)="Languages()">
+                        <a class="navLink">Language </a>
+                        <div class="Lang">
+                            <div (click)="ChangeLang('En')"><img class="flag" src="../../../assets/Images/En.jpg" alt=""></div>
+                            <div (click)="ChangeLang('Ar')"><img class="flag" src="../../../assets/Images/AR.png" alt=""></div>
+                        </div>
+                    </li>
+                    <li class="navItem"><a class="navLink">Help</a></li>
+                </ul>
+                <div class="login">
+                    <a class="navLink">Login</a><a class="navLink">SignIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

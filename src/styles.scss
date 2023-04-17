@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary: #42a7e5;
+    --secondary: #ff6b53;
+    --gradient: linear-gradient(73.08deg, #2c406e 15.14%, #d5bdff 92.25%);
+    --primary-hover: #1e90d6;
+    --primary-dark: #11547d;
+    --rgba-primary-1: rgba(66, 167, 229, 0.1);
+    --rgba-primary-2: rgba(66, 167, 229, 0.2);
+    --rgba-primary-3: rgba(66, 167, 229, 0.3);
+    --rgba-primary-4: rgba(66, 167, 229, 0.4);
+    --rgba-primary-5: rgba(66, 167, 229, 0.5);
+    --rgba-primary-6: rgba(66, 167, 229, 0.6);
+    --rgba-primary-7: rgba(66, 167, 229, 0.7);
+    --rgba-primary-8: rgba(66, 167, 229, 0.8);
+    --rgba-primary-9: rgba(66, 167, 229, 0.9);
+    --font-family-base: Lato, sans-serif;
+    --font-family-title: Lato, sans-serif;
+    --border-radius-base: 8px;
+    --border-color: #e8eff3;
+    --body-color: #7d8fab;
+    --dark: #2c406e;
+    --bg-white: #fff;
+    --box-shadow: 0px 12px 30px 0px rgba(48, 48, 48, 0.14);
+    --title: #4f658b;
+}
+
+body {
+    // direction: rtl;
+}
