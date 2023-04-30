@@ -344,12 +344,10 @@ End Header */
 }
 
 .Lang div {
-    padding: 20px !important;
+    padding: 10px !important;
 }
 
-.Lang div :hover {
-    background-color: #d80101;
-}
+.Lang div {}
 
 .flag {
     max-width: 20px;
@@ -481,13 +479,13 @@ End Header */
     cursor: pointer;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 750px) {
     .mynavbr .mynavbar-parent {
         flex-direction: row-reverse;
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 750px) {
     .mynavbr .links {
         display: none!important;
     }
@@ -497,7 +495,7 @@ End Header */
     display: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 750px) {
     .sidemenue-icon {
         display: block!important;
     }
@@ -522,7 +520,7 @@ End Header */
     display: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 750px) {
     .mynavbr .login {
         display: none;
     }

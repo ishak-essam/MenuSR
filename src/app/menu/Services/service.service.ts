@@ -1,25 +1,73 @@
-import { Injectable, Input, OnChanges } from '@angular/core';
+import {
+  Injectable,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  RendererFactory2,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
-import { __values } from 'tslib';
+import { BehaviorSubject, observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService implements OnChanges {
-  constructor(private http: HttpClient) {}
-  private _data = new BehaviorSubject<string>('En');
-  data$ = this._data.asObservable();
-  setData(value: string) {
-   return this._data.next(value);
+  private renderer!: Renderer2;
+  private primaryColors!: any;
+  private Language = new BehaviorSubject<string>('en');
+  data$ = this.Language.asObservable();
+  Data: any = new BehaviorSubject<any>([]);
+  constructor(
+    private http: HttpClient,
+    private rendererFactory: RendererFactory2,
+    private cookies:CookieService
+  ) {
+    this.renderer = this.rendererFactory.createRenderer(null, null);
   }
-  getAllItems() {
-    return this.http.get(
-      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this._data.value}`)
-  }
+
   ngOnChanges(): void {
     this.getAllItems();
   }
+  setData(value: string) {
+     this.Language.next(value);
+    this.getAllItems()
+  }
+  getAllItems() {
+    // return this.http.get(
+    //   `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.Language.value}`
+    // );
+    return this.http.get(
+      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.cookies.get("Language")}`
+    );
+  }
+  GetData() {
+    return this.getAllItems().subscribe((ele: any) => {
+      this.Data.next(ele.products);
+      console.log(ele.products);
+    });
+  }
+  getPrimaryColor() {
+    this.http
+      .get<{ primaryColor: string }>(
+        'http://inv.egypto-soft.com/ihs/test/menu?key=102'
+      )
+      .subscribe((response) => {
+        this.primaryColors = response;
+        this.primaryColors = this.primaryColors?.primarycolor;
+        const rootStyles = getComputedStyle(document.documentElement);
+        const primaryColor = rootStyles.getPropertyValue('--primary');
+        document.documentElement.style.setProperty(
+          '--primary',
+          `${this.primaryColors}`
+        );
+        const primaryColord = rootStyles.getPropertyValue('--primary');
+      });
+  }
   GetItems(lang: string) {
+    this.getAllItems();
+
     return this.http.get(
       `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${lang}`
     );

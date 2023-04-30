@@ -20,8 +20,8 @@
         <button class="add-to-cart" (click)="AddToCart()">Add to Cart</button>
     </div>
 </div> -->
-<div class="back-button-container">
-    <a (click)="back()" class="back-button">Back</a>
+<div class="back-button-container" (click)="backPage()">
+    <a class="back-button">Back</a>
 </div>
 <div class="page-content">
     <div class="content-body fb">
@@ -88,7 +88,7 @@
                     <span class="text-style">Price</span>
                     <h3>
                         {{ Item?.price | currency : "SR " : "symbol" : "1.2-2" }}
-                        <del *ngIf="Item?.oldprice != 0.00">
+                        <del *ngIf="Item?.oldprice != 0.0">
               {{ Item?.oldprice | currency : "SR " : "symbol" : "1.2-2" }}</del
             >
           </h3>
@@ -104,7 +104,8 @@
                 [disabled]="quantity == 1"
                 type="button"
               >
-                -
+
+          -
               </button></span
             ><input
               class="stepper form-control"
@@ -131,8 +132,8 @@
     </div>
   </div>
 </div>
-<div class="footer fixed">
-  <div class="container">
-    <a class="btn btn-primary text-start w-100 btn-rounded"> PLACE ORDER </a>
-  </div>
+<div class="footer fixed" (click)="AddToCart()">
+  <div class="container ">
+    <a class="btn btn-primary text-start w-100 btn-rounded"> PLACE ORDER </a> </div>
+
 </div>

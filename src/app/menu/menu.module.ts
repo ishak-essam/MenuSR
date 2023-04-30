@@ -10,7 +10,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CategoryItemsComponent } from './category-items/category-items.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CartComponent } from './cart/cart.component';
-
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -21,7 +24,17 @@ import { CartComponent } from './cart/cart.component';
     CategoriesComponent,
     CartComponent,
   ],
-  imports: [CommonModule, RouterModule, BrowserModule, FormsModule],
+  imports: [CommonModule, RouterModule, BrowserModule, FormsModule, TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: httpTranslateLoader,
+      deps: [HttpClient]
+    }
+  })],
+  providers:[CookieService],
   exports: [HomeComponent, NavBarComponent, SelectComponent, CartComponent],
 })
 export class MenuModule {}
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

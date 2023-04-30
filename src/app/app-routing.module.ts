@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'categories/:category', component: CategoryItemsComponent },
   { path: 'categories', component: CategoriesComponent },
-  { path: 'cart/:id', component: CartComponent },
+  { path: 'cart', component: CartComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

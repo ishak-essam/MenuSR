@@ -1,5 +1,6 @@
 :root {
     --primary: #42a7e5;
+    // --primary: red;
     --secondary: #ff6b53;
     --gradient: linear-gradient(73.08deg, #2c406e 15.14%, #d5bdff 92.25%);
     --primary-hover: #1e90d6;
@@ -22,8 +23,4 @@
     --bg-white: #fff;
     --box-shadow: 0px 12px 30px 0px rgba(48, 48, 48, 0.14);
     --title: #4f658b;
-}
-
-body {
-    // direction: rtl;
 }

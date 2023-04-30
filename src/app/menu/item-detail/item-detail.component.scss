@@ -429,15 +429,6 @@ svg {
     background-color: var(--bg-white);
 }
 
-.btn.btn-success,
-.btn.btn-secondary,
-.btn.btn-warning,
-.btn.btn-primary,
-.btn.btn-danger,
-.btn.btn-info {
-    color: #fff;
-}
-
 .btn-rounded {
     border-radius: 2.75rem;
 }
@@ -473,14 +464,13 @@ svg {
 }
 
 .back-button-container {
-    position: absolute;
-    transform: translate(-50%, -50%);
+    position: relative;
     cursor: pointer;
-    right: 0;
+    left: 10%;
 }
 
 .back-button {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     color: #fff;
     border: none;
     cursor: pointer;
