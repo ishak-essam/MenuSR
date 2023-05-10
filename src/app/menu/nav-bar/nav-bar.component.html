@@ -9,33 +9,65 @@
                     <li class="navItem">
                         <a class="navLink" routerLink="/categories">Groups</a>
                     </li>
-                    <li class="navItem"><a class="navLink">About </a></li>
+                    <li class="navItem"><a class="navLink">About
+                    </a></li>
                     <li class="navItem" (click)="Languages()">
                         <!-- (click)="Languages()" -->
-                        <a class="navLink">Language </a>
-                        <div class="Lang">
+                        <!-- <a class="navLink">Language </a> -->
+                        <!-- <span class="form-inline">
+                          <select
+                            class="form-control"
+                            #selectedLang
+                            (change)="switchLang(selectedLang.value)"
+                          >
+                            <option
+                              *ngFor="let language of translate.getLangs()"
+                              [value]="language"
+                              [selected]="language === translate.currentLang"
+                            >
+                              {{ language }}
+
+                        </option>
+                        </select>
+                        </span> -->
+                        <!--  <div class="Lang">
                             <div (click)="ChangeLang('En')" class="En">
                                 <img class="flag" src="../../../assets/Images/En.jpg" alt="" />
                             </div>
                             <div (click)="ChangeLang('Ar')" class="Ar">
                                 <img class="flag" src="../../../assets/Images/AR.png" alt="" />
                             </div>
-                        </div>
-                        <!--
-                        <span class="form-inline">
-                          <select
-                              class="form-control"
-                              #selectedLang
-                              (change)="switchLang(selectedLang.value)">
-                            <option *ngFor="let language of translate.getLangs()"
-                              [value]="language"
-                              [selected]="language === translate.currentLang">
-                              {{ language }}
-                            </option>
-                          </select>
-                        </span>-->
+                        </div>-->
+                        <!-- <mat-form-field class="Lang" style="max-width: 100px;">
+                            <mat-label>Select</mat-label>
+                            <mat-select>
+                                <mat-option (click)="ChangeLang('En')" class="En">
+                                    <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
+                                <mat-option (click)="ChangeLang('Ar')" class="Ar">
+                                    <img with="15" height="10" src="../../../assets/Images/AR.png" />Arabic</mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
+                        <mat-form-field style="max-width: 110px">
+                            <mat-label>{{ language }}</mat-label>
+                            <mat-select>
+                                <mat-option (click)="ChangeLang('En')" class="En">
+                                    <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
+                                <mat-option (click)="ChangeLang('Ar')" class="Ar">
+                                    <img with="15" height="10" src="../../../assets/Images/AR.png" />Arabic</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </li>
                     <li class="navItem"><a class="navLink">Help</a></li>
+                    <li>
+                    </li>
+                    <li class="cart">
+                        <a routerLink="/cart">
+                            <div matBadge="{{cartallcontent}}" matBadgeSize="large" class="demo-section">
+                                Cart
+                                <mat-icon>shopping_cart</mat-icon>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 <div class="login">
                     <a class="navLink">Login</a><a class="navLink">SignIn</a>
@@ -62,16 +94,34 @@
                     </li>
                     <li class="navItem"><a class="navLink">About </a></li>
                     <li class="navItem" (click)="Languages()">
-                        <!-- (click)="Languages()" -->
-                        <a class="navLink">Language </a>
-                        <div class="Lang">
-                            <div (click)="ChangeLang('En')" class="En">
+                        <!-- (click)="Languages()"  <a class="navLink">Language </a> -->
+
+                        <!-- <div class="Lang">
+                            <div (click)="ChangeLang( 'En')" class="En">
                                 <img class="flag" src="../../../assets/Images/En.jpg" alt="" />
                             </div>
-                            <div (click)="ChangeLang('Ar')" class="Ar">
+                            <div (click)="ChangeLang( 'Ar')" class="Ar">
                                 <img class="flag" src="../../../assets/Images/AR.png" alt="" />
                             </div>
-                        </div>
+                        </div> -->
+                        <!-- <mat-form-field class="Lang" style="max-width: 100px;">
+                            <mat-label>Select</mat-label>
+                            <mat-select>
+                                <mat-option (click)="ChangeLang( 'En')" class="En">
+                                    <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
+                                <mat-option (click)="ChangeLang( 'Ar')" class="Ar">
+                                    <img with="15" height="10" src="../../../assets/Images/AR.png" />Arabic</mat-option>
+                            </mat-select>
+                        </mat-form-field> -->
+                        <mat-form-field style="max-width: 110px">
+                            <mat-label>{{ language }}</mat-label>
+                            <mat-select>
+                                <mat-option (click)="ChangeLang('En')" class="En">
+                                    <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
+                                <mat-option (click)="ChangeLang('Ar')" class="Ar">
+                                    <img with="15" height="10" src="../../../assets/Images/AR.png" />Arabic</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                         <!--     <span class="form-inline">
                           <select
                               class="form-control"
@@ -79,75 +129,83 @@
                               (change)="switchLang(selectedLang.value)">
                             <option *ngFor="let language of translate.getLangs()"
                               [value]="language"
-                              [selected]="language === translate.currentLang">
+                              [selected]="language===t ranslate.currentLang">
                               {{ language }}
                             </option>
                           </select>
                         </span>-->
                     </li>
                     <li class="navItem"><a class="navLink">Help</a></li>
+                    <li class="cart">
+                        <a routerLink="/cart">
+                            <div matBadge="{{cartallcontent}}" matBadgeSize="large" class="demo-section">
+                                Cart
+                                <mat-icon>shopping_cart</mat-icon>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
-                <div class="login">
-                    <a class="navLink">Login</a><a class="navLink">SignIn</a>
+                <div class="login ">
+                    <a class="navLink ">Login</a><a class="navLink ">SignIn</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!--
-<nav class="navbar navbar-dark bg-primary">
-    <div class="container">
-        <a class="navbar-brand">
-      {{ "Sitetitle" | translate }}
+<nav class="navbar navbar-dark bg-primary ">
+    <div class="container ">
+        <a class="navbar-brand ">
+      {{"Sitetitle " | translate }}
     </a>
-        <span class="form-inline">
+        <span class="form-inline ">
       <select
-        class="form-control"
+        class="form-control "
         #selectedLang
-        (change)="switchLang(selectedLang.value)"
+        (change)="switchLang(selectedLang.value) "
       >
         <option
-          *ngFor="let language of translate.getLangs()"
-          [value]="language"
-          [selected]="language === translate.currentLang"
+          *ngFor="let language of translate.getLangs() "
+          [value]="language "
+          [selected]="language===t ranslate.currentLang "
         >
           {{ language }}
         </option>
       </select>
     </span>
-    </div>
-</nav>
- <div class="container">
-    <form>
-        <div class="form-group">
-            <label>{{ "Name" | translate }}</label>
-            <input type="text" class="form-control" />
-            <small class="text-danger">{{ "NameError" | translate }}</small>
-        </div>
-        <div class="form-group">
-            <label>{{ "Email" | translate }}</label>
-            <input type="email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>{{ "PhoneNo" | translate }}</label>
-            <input type="tel" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>{{ "Password" | translate }}</label>
-            <input type="password" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>{{ "Bio" | translate }}</label>
-            <textarea rows="3" class="form-control"></textarea>
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" />
-            <label class="form-check-label">{{
-        "TermsConditions" | translate
+            </div>
+            </nav>
+            <div class="container ">
+                <form>
+                    <div class="form-group ">
+                        <label>{{"Name " | translate }}</label>
+                        <input type="text " class="form-control " />
+                        <small class="text-danger ">{{"NameError " | translate }}</small>
+                    </div>
+                    <div class="form-group ">
+                        <label>{{"Email " | translate }}</label>
+                        <input type="email " class="form-control " />
+                    </div>
+                    <div class="form-group ">
+                        <label>{{"PhoneNo " | translate }}</label>
+                                          </div>
+                    <div class="form-group ">
+                        <label>{{"Password " | translate }}</label>
+                        <input type="password " class="form-control " />
+                    </div>
+                    <div class="form-group ">
+                        <label>{{"Bio " | translate }}</label>
+                        <textarea rows="3 " class="form-control "></textarea>
+                    </div>
+                    <div class="form-group form-check ">
+                        <input type="checkbox " class="form-check-input " />
+                        <label class="form-check-label ">{{
+"TermsConditions " | translate
       }}</label>
-        </div>
-        <button type="submit" class="btn btn-block btn-danger">
-      {{ "Submit" | translate }}
+                    </div>
+                    <button type="submit " class="btn btn-block btn-danger ">
+      {{"Submit " | translate }}
     </button>
-    </form>
-</div> -->
+                </form>
+            </div> -->

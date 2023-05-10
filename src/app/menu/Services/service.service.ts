@@ -19,10 +19,14 @@ export class ServiceService implements OnChanges {
   private Language = new BehaviorSubject<string>('en');
   data$ = this.Language.asObservable();
   Data: any = new BehaviorSubject<any>([]);
+  DataTransalte: any = new BehaviorSubject<any>([]);
+  CartContentAll: any = new BehaviorSubject<any>([]);
+  myNumberSubject: any = new BehaviorSubject<number>(0);
+  private DataTranslateLanguage = new BehaviorSubject<[]>([]);
   constructor(
     private http: HttpClient,
     private rendererFactory: RendererFactory2,
-    private cookies:CookieService
+    private cookies: CookieService
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
@@ -31,21 +35,25 @@ export class ServiceService implements OnChanges {
     this.getAllItems();
   }
   setData(value: string) {
-     this.Language.next(value);
-    this.getAllItems()
+    this.Language.next(value);
+  }
+  setDataTransalte(value: []) {
+    this.DataTranslateLanguage.next(value);
+    this.Data.next(value);
+  }
+  Carthave() {
+    this.myNumberSubject.next(JSON.parse(localStorage.getItem("Cart")!)?.length);
   }
   getAllItems() {
-    // return this.http.get(
-    //   `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.Language.value}`
-    // );
     return this.http.get(
-      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.cookies.get("Language")}`
+      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.cookies.get(
+        'Language'
+      )}`
     );
   }
   GetData() {
     return this.getAllItems().subscribe((ele: any) => {
       this.Data.next(ele.products);
-      console.log(ele.products);
     });
   }
   getPrimaryColor() {

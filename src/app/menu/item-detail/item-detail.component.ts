@@ -12,6 +12,7 @@ export class ItemDetailComponent {
   Items!: any;
   Item!: any;
   quantity: number = 1;
+  myText!: string;
   id!: any;
   constructor(
     private service: ServiceService,
@@ -46,17 +47,25 @@ export class ItemDetailComponent {
   CartItem = {
     Item: {},
     quantity: this.quantity,
+    Des: '',
   };
 
   AddToCart() {
-    this.CartItems = JSON.parse(localStorage.getItem('Cart')!);
-    this.CartItem.quantity = this.quantity;
-    this.CartItems.push(this.CartItem);
-    this.service.PostItem(this.CartItem);
-    localStorage.setItem('Cart', JSON.stringify(this.CartItems));
+    const span: any = document.querySelector('.span');
+    span.style.display = 'flex';
     setTimeout(() => {
+      this.CartItems = JSON.parse(localStorage.getItem('Cart')!);
+      this.CartItem.quantity = this.quantity;
+      this.CartItem.Des = this.myText;
+      this.CartItems.push(this.CartItem);
+      this.service.PostItem(this.CartItem);
+      localStorage.setItem('Cart', JSON.stringify(this.CartItems));
+      span.style.display = 'none';
       this.router.navigate(['/cart']);
-    }, 1250);
+      this.service.Carthave();
+      console.log(localStorage.getItem("Cart")?.length)
+ this.service.myNumberSubject.subscribe((value:any) => console.log(value));
+    }, 2000);
   }
   increaseQuantity() {
     this.quantity++;

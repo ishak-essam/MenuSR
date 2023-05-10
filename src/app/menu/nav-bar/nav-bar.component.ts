@@ -13,19 +13,35 @@ export class NavBarComponent implements OnInit, OnChanges {
   Header!: any;
   logo!: string;
   data!: string;
+  language!: string;
+  cartallcontent!: number;
   constructor(
     private service: ServiceService,
     public translate: TranslateService,
-    private cookieService:CookieService
+    private cookieService: CookieService
   ) {
+    // translate.addLangs(['en', 'ar','fr']);
+    translate.addLangs(['En', 'Ar']);
+    translate.setDefaultLang('En');
+  }
+  hidden = false;
 
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
   ngOnInit(): void {
     this.AllData();
+    // this.cartallcontent = this.service.CartContentAll.value.length;
+    this.service.myNumberSubject.subscribe((value: any) => {
+      this.cartallcontent = value;
+    });
+
     this.service.data$.subscribe((value) => {
       this.data = value;
     });
     this.setCookies();
+    if (this.cookieService.get('Language') == 'Ar') this.language = 'Arabic';
+    else this.language = 'English';
   }
   switchLang(lang: string) {
     // this.translate.use('../../../assets/Json/DataMenu');
@@ -57,21 +73,21 @@ export class NavBarComponent implements OnInit, OnChanges {
     document.body.style.overflow = 'hidden';
   }
   Languages() {
-    const myElement = document.querySelectorAll(
-      '.Lang'
-    ) as NodeListOf<HTMLElement>;
+    // const myElement = document.querySelectorAll(
+    //   '.Lang'
+    // ) as NodeListOf<HTMLElement>;
 
-    if (myElement[0].style.display === 'flex') {
-      {
-        myElement.forEach((element) => {
-          (element as HTMLElement).style.display = '';
-        });
-      }
-    } else if (myElement[0].style.display != 'flex') {
-      myElement.forEach((element) => {
-        (element as HTMLElement).style.display = 'flex';
-      });
-    }
+    // if (myElement[0].style.display === 'flex') {
+    //   {
+    //     myElement.forEach((element) => {
+    //       (element as HTMLElement).style.display = '';
+    //     });
+    //   }
+    // } else if (myElement[0].style.display != 'flex') {
+    //   myElement.forEach((element) => {
+    //     (element as HTMLElement).style.display = 'flex';
+    //   });
+    // }
     this.AllData();
   }
   ChangeLang(lang: any) {
@@ -97,10 +113,28 @@ export class NavBarComponent implements OnInit, OnChanges {
       });
     }
     // this.service.setData(lang);
-    this.cookieService.set("Language",lang)
 
+    this.translate.use(lang);
+    const translations = this.translate.getTranslation(lang);
+    translations.subscribe((ele) => {
+      this.service.setDataTransalte(ele.products);
+    });
+
+    this.cookieService.set('Language', lang);
+    if (this.cookieService.get('Language') == 'Ar') this.language = 'Arabic';
+    else this.language = 'English';
   }
-  setCookies(){
+  setCookies() {
     // this.cookieService.set("Language","En")
   }
+  /*
+  constructor(public translate: TranslateService) {
+    // translate.addLangs(['en', 'ar','fr']);
+    translate.addLangs(['en', 'ar']);
+    translate.setDefaultLang('ar');
+  }
+  switchLang(lang: string) {
+    console.log(lang);
+    console.log(this.translate.use(lang));
+  }*/
 }

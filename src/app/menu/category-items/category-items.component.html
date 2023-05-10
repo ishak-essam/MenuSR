@@ -18,20 +18,23 @@
                             <div class="item-footer">
                                 <div class="d-flex align-items-center">
                                     <h6 class="me-3">
-                                        {{ item?.price | currency : "USD" : "symbol-narrow" : "1.2-2" }}
+                                        {{ item?.price | currency : "SAR " : "symbol-narrow" : "1.2-2" }}
                                     </h6>
 
                                     <del class="off-text">
                     <h6 *ngIf="item?.oldprice != '0.00'">
                       {{
                         item?.oldprice
-                          | currency : "USD" : "symbol-narrow" : "1.2-2"
+                          | currency : "SAR " : "symbol-narrow" : "1.2-2"
                       }}
                     </h6></del
                   >
                 </div>
-                <div class="d-flex align-items-center">
-                  <h6>4.5</h6>
+                <div class="d-flex align-items-center" *ngIf="item?.oldprice != '0.00'">
+                  <small> {{
+                    item?.kcal
+                      | currency : "Kcal " : "symbol-narrow" : "1.2-2"
+                  }}</small>
                 </div>
               </div>
             </div>

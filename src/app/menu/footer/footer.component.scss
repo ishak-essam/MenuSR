@@ -1,0 +1,70 @@
+.menubar-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-white);
+    padding: 10px;
+    z-index: 999;
+    box-shadow: 0 12px 26px 0 rgba(0, 0, 0, 0.3);
+}
+
+.menubar-area .toolbar-inner {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+}
+
+.menubar-area .toolbar-inner .nav-link,
+.menubar-area .toolbar-inner .menu-toggler {
+    color: var(--title);
+    text-decoration: none;
+    text-align: center;
+    width: 25%;
+    padding: 0 0;
+    font-size: 18px;
+}
+
+.menubar-area .toolbar-inner .nav-link i,
+.menubar-area .toolbar-inner .menu-toggler i {
+    line-height: 1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menubar-area .toolbar-inner .nav-link.active,
+.menubar-area .toolbar-inner .menu-toggler.active {
+    position: relative;
+}
+
+.menubar-area .toolbar-inner .nav-link.active svg path,
+.menubar-area .toolbar-inner .menu-toggler.active svg path {
+    fill: var(--primary);
+}
+
+.menubar-area .toolbar-inner .nav-link.active:after,
+.menubar-area .toolbar-inner .menu-toggler.active:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 70px;
+    height: 6px;
+    background: var(--primary);
+    border-radius: 10px 10px 0px 0px;
+    transform: translateX(-50%);
+}
+
+.menubar-area .toolbar-inner .nav-link .title,
+.menubar-area .toolbar-inner .menu-toggler .title {
+    display: block;
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 12px;
+}

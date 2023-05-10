@@ -1,3 +1,25 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MenuSR-primary: mat.define-palette(mat.$indigo-palette);
+$MenuSR-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$MenuSR-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$MenuSR-theme: mat.define-light-theme(( color: ( primary: $MenuSR-primary, accent: $MenuSR-accent, warn: $MenuSR-warn, )));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($MenuSR-theme);
 :root {
     --primary: #42a7e5;
     // --primary: red;
@@ -13,6 +35,44 @@
     --rgba-primary-6: rgba(66, 167, 229, 0.6);
     --rgba-primary-7: rgba(66, 167, 229, 0.7);
     --rgba-primary-8: rgba(66, 167, 229, 0.8);
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #42A7E5;
+    --bs-secondary: #FF6B53;
+    --bs-success: #84CA93;
+    --bs-info: #A183E0;
+    --bs-warning: #FFA902;
+    --bs-danger: #f75a5b;
+    --bs-light: #E8EFF3;
+    --bs-dark: #2C406E;
+    --bs-primary-rgb: 66, 167, 229;
+    --bs-secondary-rgb: 255, 107, 83;
+    --bs-success-rgb: 132, 202, 147;
+    --bs-info-rgb: 161, 131, 224;
+    --bs-warning-rgb: 255, 169, 2;
+    --bs-danger-rgb: 247, 90, 91;
+    --bs-light-rgb: 232, 239, 243;
+    --bs-dark-rgb: 44, 64, 110;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 125, 143, 171;
+    --bs-body-bg-rgb: 247, 247, 247;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: Lato, sans-serif;
+    --bs-body-font-size: 0.875rem;
+    --bs-body-font-weight: 500;
+    --bs-body-line-height: 1.6;
+    --bs-body-color: #7D8FAB;
+    --bs-body-bg: #f7f7f7;
     --rgba-primary-9: rgba(66, 167, 229, 0.9);
     --font-family-base: Lato, sans-serif;
     --font-family-title: Lato, sans-serif;
@@ -23,4 +83,38 @@
     --bg-white: #fff;
     --box-shadow: 0px 12px 30px 0px rgba(48, 48, 48, 0.14);
     --title: #4f658b;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+body {
+    margin: 0;
+    overflow: auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.theme-dark {
+    background-color: #2c3f6d !important;
+    color: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --bg-white: #2c3f6d;
+    --title: rgba(255, 255, 255, 0.7);
+    --dark: var(--primary);
+}
+
+.bg-white {
+    --bs-bg-opacity: 1;
+    // background-color: rgba(var(--bs-white-rgb)) !important;
 }

@@ -1,28 +1,150 @@
-<div class="cart">
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of CartItems">
-                <td>{{item.Item?.name}}</td>
+<!-- <table class="cart-table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of CartItems; let i = index">
+            <td>{{ item.Item?.name }}</td>
+            <td class="price">SAR {{ item.Item?.price }}</td>
+            <td class="quantity">
+                <div class="dz-stepper border-1 col-5">
+                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                        <span class="input-group-btn input-group-prepend">
+              <button
+                class="btn btn-primary bootstrap-touchspin-down"
+                (click)="decreaseQuantity(i)"
+                [disabled]="item.quantity == 1"
+                type="button"
+              >
+                -
+              </button></span
+            ><input
+              class="stepper form-control"
+              [(ngModel)]="item.quantity"
+              type="text"
+              name="demo3"
+            /><span class="input-group-btn input-group-append"
+              ><button
+                class="btn btn-primary bootstrap-touchspin-up"
+                type="button"
+                (click)="increaseQuantity(i)"
+              >
+                +
+              </button></span
+            >
+          </div>
+        </div>
+      </td>
+      <td class="subtotal">{{ item.quantity * item.Item?.price }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="total">Total:</td>
+      <td class="total"> {{ TotalPrice }} SAR</td>
+    </tr>
+  </tfoot>
+</table> -->
 
-                <td>{{item.Item?.groupname}}</td>
-                <td>SAR {{item.Item?.price}}</td>
-                <td><input type="number" value="{{item.quantity}}" min="1"></td>
-                <td>{{item.quantity*item.Item?.price}}</td>
-            </tr>
-            <!-- repeat the above row for each product -->
-        </tbody>
-    </table>
-    <div class="cart-total">
-        <p>Total: $50.00</p>
-        <button>Checkout</button>
+<!-- <div class="cart-total">
+    <span class="cart-total-label">Total Price:</span>
+    <span class="cart-total-price">$35.00</span>
+</div> -->
+
+<!-- Page content -->
+<div class="page-content">
+    <div class="container bottom-content">
+        <div class="item-list style-2">
+            <ul>
+                <li *ngFor="let item of CartItems; let i = index">
+                    <div class="item-content">
+                        <div class="item-media media media-60">
+                            <img src="{{ item.Item?.image }}" alt="logo" />
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <h6 class="item-title">
+                                    <a href="order-list.html">{{ item.Item?.name }}</a>
+                                </h6>
+                                <div class="item-subtitle">{{ item.Item?.groupname }}</div>
+                            </div>
+                            <div class="item-footer">
+                                <div class="d-flex align-items-center">
+                                    <h6 class="me-3">{{ item.Item?.price }} SAR</h6>
+                                    <del class="off-text" *ngIf="item.Item?.oldprice!='0' "><h6>{{ item.Item?.oldprice }} SAR</h6></del
+                  >
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="dz-stepper border-1 col-5">
+                    <div
+                      class="input-group bootstrap-touchspin bootstrap-touchspin-injected"
+                    >
+                      <span class="input-group-btn input-group-prepend">
+                        <button
+                          class="btn btn-primary bootstrap-touchspin-down"
+                          (click)="decreaseQuantity(i)"
+                          [disabled]="item.quantity == 1"
+                          type="button"
+                        >
+                          -
+                        </button></span
+                      ><input
+                        class="stepper form-control"
+                        [(ngModel)]="item.quantity"
+                        type="text"
+                        name="demo3"
+                      /><span class="input-group-btn input-group-append"
+                        ><button
+                          class="btn btn-primary bootstrap-touchspin-up"
+                          type="button"
+                          (click)="increaseQuantity(i)"
+                        >
+                          +
+                        </button></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>     <div class="textareaheader">
+            <h6 class="header6">Description</h6>
+            <textarea placeholder="Your Requirement" rows="1" cols="50" >{{item.Des}}</textarea>
+          </div>
+            </div>
+          </div>
+
+        </li>
+      </ul>
     </div>
+    <div class="view-title">
+      <ul>
+        <li>
+          <span>Subtotal</span>
+          <span>{{ TotalPrice }}</span>
+        </li>
+        <li>
+          <span>TAX (2%)</span>
+          <span>-$1.08</span>
+        </li>
+        <li>
+          <h5>Total</h5>
+          <h5>{{ TotalPrice }} SAR</h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer fixed">
+    <div class="container confrim">
+      <div class="footer-btn d-flex align-items-center">
+        <a routerLink="" class="btn btn-primary btn-rounded flex-1 ms-2"
+          >CONFIRM</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
+<!-- Page content End-->

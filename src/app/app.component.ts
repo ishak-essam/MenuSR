@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from './menu/Services/service.service';
 import { CookieService } from 'ngx-cookie-service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,35 +10,42 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent implements OnInit {
   // cookie_name = '';
-  // all_cookies: any = '';
+  darkMode = true;
 
-  // constructor(private cookieService: CookieService) {}
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    private service: ServiceService,
+    private cookieService: CookieService
+  ) {
+    // Register the sun and moon icons
+    this.matIconRegistry.addSvgIcon(
+      'sun',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/sun.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'moon',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/moon.svg')
+    );
+  }
+  toggleDarkMode() {
+    const body = document.querySelector('body');
 
-  // setCookie() {
-  //   this.cookieService.set('name', 'Tutorialswebsite');
-  // }
-
-  // deleteCookie() {
-  //   this.cookieService.delete('name');
-  //   console.log(this.all_cookies);
-  //   console.log(this.cookie_name);
-  // }
-
-  // deleteAll() {
-  //   this.cookieService.deleteAll();
-  //   console.log(this.all_cookies);
-  //   console.log(this.cookie_name);
-  // }
-
-  // ngOnInit(): void {
-  //   this.setCookie();
-  //   this.cookie_name = this.cookieService.get('name');
-  //   this.all_cookies = this.cookieService.getAll();
-  // }
+    // Add a class to the body element
+    if (this.darkMode) {
+      document.querySelector('body')?.classList.add('theme-dark', 'bg-white');
+    } else {
+      body?.classList.remove('theme-dark');
+    }
+    this.darkMode = !this.darkMode;
+    // Remove a class from the body element
+  }
   ngOnInit(): void {
     this.service.getPrimaryColor();
-    this.cookie_name=this.cookieService.get('name');  // get the cookie value
-    this.all_cookies=this.cookieService.getAll();
+    this.cookie_name = this.cookieService.get('name'); // get the cookie value
+    this.all_cookies = this.cookieService.getAll();
+    // localStorage.removeItem("Cart")
+    // console.log(JSON.stringify(localStorage.getItem("Cart"))?.)
   }
   cookie_name = '';
   all_cookies: any = '';
@@ -46,10 +55,7 @@ export class AppComponent implements OnInit {
   }
 
   title = 'MenuSR';
-  constructor(
-    private service: ServiceService,
-    private cookieService: CookieService
-  ) {}
+
   setCookie() {
     console.log(this.cookie_name);
     console.log(this.all_cookies);

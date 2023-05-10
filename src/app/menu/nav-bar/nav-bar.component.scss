@@ -103,7 +103,6 @@ ul {
     width: 12px;
     height: 12px;
     background-color: #2196f3;
-    ;
     position: absolute;
     border-radius: 50%;
     top: 50%;
@@ -329,14 +328,14 @@ End Header */
     padding: 0;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box!important;
+    box-sizing: border-box !important;
 }
 
 .mynavbr .mynavbar-parent ul .navItem {
     margin-right: 10px;
     margin-left: 10px;
     position: relative;
-    box-sizing: border-box!important;
+    box-sizing: border-box !important;
 }
 
 .Lang {
@@ -347,8 +346,16 @@ End Header */
     padding: 10px !important;
 }
 
-.Lang div {}
+#mat-badge-content-1 {
+    right: auto;
+    left: auto;
+}
 
+.cart {
+    cursor: pointer;
+}
+
+// .Lang div {}
 .flag {
     max-width: 20px;
 }
@@ -359,7 +366,7 @@ End Header */
     font-weight: 500;
     padding: 10px;
     border-radius: 5px;
-    box-sizing: border-box!important;
+    box-sizing: border-box !important;
     cursor: pointer;
 }
 
@@ -389,13 +396,13 @@ End Header */
 
 .Mysidebar {
     background-color: #fff;
-    box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
+    box-shadow: 0 12px 30px rgba(80, 143, 244, 0.1);
     width: 230px;
     right: -300px;
     overflow: auto;
     padding: 10px 20px;
     z-index: 999;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .Mysidebar .closeSideMenue {
@@ -487,7 +494,7 @@ End Header */
 
 @media (max-width: 750px) {
     .mynavbr .links {
-        display: none!important;
+        display: none !important;
     }
 }
 
@@ -497,7 +504,7 @@ End Header */
 
 @media (max-width: 750px) {
     .sidemenue-icon {
-        display: block!important;
+        display: block !important;
     }
 }
 
@@ -525,7 +532,7 @@ End Header */
         display: none;
     }
     .sidemenue-icon {
-        display: block!important;
+        display: block !important;
     }
 }
 
@@ -537,7 +544,7 @@ End Header */
 .bg-sidenavOpen {
     overflow: hidden;
     width: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
     left: 0;
     right: 0;
     bottom: 0;
@@ -604,6 +611,10 @@ End Header */
 
 .services2 {
     background-color: #e01753;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white;
 }
 
 .services3 {

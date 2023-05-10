@@ -13,9 +13,8 @@ export class HomeComponent implements OnInit, OnChanges {
     private service: ServiceService,
     private router: Router,
     private location: Location
-  ) {
-
-  }
+  ) {}
+  kcal: string = '../../../assets/Icons/calories.png';
   ngOnChanges(): void {}
   ngOnDestroy() {}
   Category: any = [];
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit, OnChanges {
       this.Data = ele;
     });
   }
-  CategorySearch?: any = 'All';
+  CategorySearch?: any = 'all';
   CategoryName(event: any) {
     this.CategorySearch = event;
   }

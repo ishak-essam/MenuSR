@@ -23,11 +23,13 @@ export class CategoryItemsComponent implements OnInit,OnChanges {
   Data: any = [];
   Category!: any;
   GetCategory() {
-    this.service.getAllItems().subscribe((ele) => {
+    this.service.Data.subscribe((ele: any) => {
       this.Data = ele;
-      this.Data = this.Data.products;
- 
     });
+    // this.service.getAllItems().subscribe((ele) => {
+    //   this.Data = ele;
+    //   this.Data = this.Data.products;
+    // });
   }
   back() {
     this.location.back();
