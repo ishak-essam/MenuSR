@@ -1,9 +1,13 @@
+
+<div class="style__StyledBackIconWrapper-sc-h2g51-0 kZiUIg" (click)="Back()"><button class="style__StyledIconButton-sc-wcxn62-0 iJGcRM"><div color="#C50101" width="44px" data-testid="back-icon-btn" height="44px" class="style__StyledIconWrapper-sc-fi3wpm-0 fisAqI"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g><path fill="rgba(0,119,189,0)" d="M0 0H24V24H0z"></path></g><path fill="#212121" d="M1598.321-2.738l-6.615-6.615a.843.843 0 0 1-.406-.721.84.84 0 0 1 .113-.422.847.847 0 0 1 .146-.2.859.859 0 0 1 .089-.078l6.672-6.672a.844.844 0 0 1 1.193 0 .844.844 0 0 1 0 1.193l-5.331 5.331h14.273a.844.844 0 0 1 .844.844.844.844 0 0 1-.844.843h-14.242l5.3 5.3a.843.843 0 0 1 0 1.192.842.842 0 0 1-.6.247.841.841 0 0 1-.592-.242z" transform="translate(-1588.301 22.689)"></path></svg><label variant="smallText" cursor="pointer" mx="0" class="style__StyledText-sc-nykyuh-0 iFSNIC"></label></div></button></div>
+
 <div class="portfolio">
     <div class="imgs-container">
-        <div class="box" *ngFor="let item of Data" routerLink="{{item?.groupname}}">
+        <div class="box" *ngFor="let item of Data" routerLink="category/{{item?.groupname}}">
             <img [src]="item?.groupimage" alt="" />
             <div class="caption">
                 <h4>{{ item.groupname }}</h4>
+                <h4>{{ item.name }}</h4>
                 <!-- <p>Description</p> -->
             </div>
         </div>

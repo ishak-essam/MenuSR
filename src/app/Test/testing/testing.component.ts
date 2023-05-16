@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-testing',
@@ -7,5 +6,5 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./testing.component.scss']
 })
 export class TestingComponent  {
- 
+
   }

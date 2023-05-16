@@ -85,7 +85,6 @@ textarea {
     border: 1px solid #ccc;
     padding: 6px 12px;
     font-size: 14px;
-    line-height: 1.42857143;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -340,6 +339,7 @@ del {
 }
 
 .dz-stepper .bootstrap-touchspin .input-group-btn .btn {
+    cursor: pointer;
     border-radius: 40px;
     width: 40px;
     height: 40px;
@@ -361,6 +361,10 @@ del {
 
 .d-flex {
     display: flex !important;
+}
+
+.con {
+    width: 100%;
 }
 
 .badge-danger {
@@ -403,14 +407,8 @@ del {
     color: #fff;
 }
 
-.btn-rounded {
-    border-radius: 2.75rem;
-}
 
-.btn-primary {
-    background-color: var(--primary);
-    border-color: var(--primary);
-}
+
 
 .btn .cart {
     transform: scale(1.2);
@@ -453,11 +451,6 @@ svg {
     z-index: -1;
 }
 
-.footer.fixed {
-    max-width: 90%;
-    background-color: var(--bg-white);
-}
-
 .btn-rounded {
     border-radius: 2.75rem;
 }
@@ -470,10 +463,10 @@ svg {
 .btn {
     font-size: 0.875rem;
     font-weight: 600;
-    padding: 15px 25px;
     line-height: 1;
     display: inline-flex;
     align-items: center;
+    cursor: pointer;
     letter-spacing: 0.5px;
     justify-content: center;
     text-decoration: none !important;
@@ -522,10 +515,8 @@ svg {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+
+    padding: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -540,9 +531,26 @@ svg {
     margin: 0;
 }
 
+.confrim {
+    display: flex;
+    justify-content: center;
+}
+
+.Confrims {
+    padding-bottom: 5%;
+}
+
+// .footer.fixed {
+//     width: 100%;
+//     left: 0;
+//     background-color: var(--bg-white);
+//     bottom: 0;
+//     z-index: 999;
+//     position: fixed;
+// }
 textarea {
     font-size: 16px;
-    padding: 10px;
+    padding: 0px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f6f6f6;
@@ -552,4 +560,48 @@ textarea:focus {
     outline: none;
     border-color: #66afe9;
     box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.kZiUIg {
+  z-index: 2;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: fixed;
+  background-color: transparent;
+  margin-inline-start: 16px;
+  top: 16px;
+}
+.iJGcRM {
+  border: none;
+  background: none;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  outline: none;
+}
+.fisAqI {
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  min-width: 44px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 0px 8px;
+  height: 44px;
+}
+
+.fisAqI svg {
+  fill: rgb(197, 1, 1);
+  transform: rotate(360deg);
+}
+.iFSNIC {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 0px;
+  margin-right: 0px;
+  cursor: pointer;
 }

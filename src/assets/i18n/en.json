@@ -1,1 +1,22 @@
-{}
+{
+  "Order": "Order Now",
+  "Confrim": "Confrim Order",
+  "Login": "Login",
+  "register": "Register",
+  "home": "Home",
+  "groups": "groups",
+  "help": "Help",
+  "about": "About",
+  "cart": "Cart",
+  "lang": "English",
+  "req": "Your Requirement",
+  "price": "Price",
+  "des": "Description",
+  "quantity": "Quantity",
+  "otp": "Enter Coder",
+  "enter": "Enter",
+  "currency": "SR",
+  "total": "Total",
+  "subtotal": "Subtotal",
+  "tax": "Tax"
+}

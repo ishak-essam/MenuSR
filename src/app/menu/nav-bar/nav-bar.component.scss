@@ -52,7 +52,8 @@ ul {
 
 @media (min-width: 768px) {
     .container {
-        width: 750px;
+        width: 840px;
+
     }
 }
 
@@ -492,7 +493,7 @@ End Header */
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
     .mynavbr .links {
         display: none !important;
     }

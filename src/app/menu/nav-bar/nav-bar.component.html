@@ -5,11 +5,11 @@
             <div class="mynavbar-parent">
                 <div class="logo"><img [src]="logo" alt="" /></div>
                 <ul class="links">
-                    <li class="navItem" routerLink=""><a class="navLink">Home</a></li>
+                    <li class="navItem" routerLink=""><a class="navLink">{{"home"|translate}}</a></li>
                     <li class="navItem">
-                        <a class="navLink" routerLink="/categories">Groups</a>
+                        <a class="navLink" (click)="grouplink()">{{"groups"|translate}}</a>
                     </li>
-                    <li class="navItem"><a class="navLink">About
+                    <li class="navItem"><a class="navLink">{{"about"|translate}}
                     </a></li>
                     <li class="navItem" (click)="Languages()">
                         <!-- (click)="Languages()" -->
@@ -48,7 +48,7 @@
                             </mat-select>
                         </mat-form-field> -->
                         <mat-form-field style="max-width: 110px">
-                            <mat-label>{{ language }}</mat-label>
+                            <mat-label>{{ "lang"|translate }}</mat-label>
                             <mat-select>
                                 <mat-option (click)="ChangeLang('En')" class="En">
                                     <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
@@ -57,20 +57,20 @@
                             </mat-select>
                         </mat-form-field>
                     </li>
-                    <li class="navItem"><a class="navLink">Help</a></li>
+                    <li class="navItem"><a class="navLink">{{"help"|translate}}</a></li>
                     <li>
                     </li>
                     <li class="cart">
                         <a routerLink="/cart">
                             <div matBadge="{{cartallcontent}}" matBadgeSize="large" class="demo-section">
-                                Cart
+                              {{"cart"|translate}}
                                 <mat-icon>shopping_cart</mat-icon>
                             </div>
                         </a>
                     </li>
                 </ul>
                 <div class="login">
-                    <a class="navLink">Login</a><a class="navLink">SignIn</a>
+                    <a class="navLink">{{"Login"|translate}}</a><a class="navLink">{{"register"|translate}}</a>
                 </div>
                 <div class="sidemenue-icon" (click)="SideBarShow()">
                     <i class="fa fa-bars"></i>
@@ -88,11 +88,11 @@
                     <a href="/"><img [src]="logo" alt="None" /></a>
                 </div>
                 <ul class="list-sidebar">
-                    <li class="navItem" routerLink=""><a class="navLink">Home</a></li>
+                    <li class="navItem" routerLink=""><a class="navLink">{{"home"|translate}}</a></li>
                     <li class="navItem">
-                        <a class="navLink" routerLink="/categories">Groups</a>
+                        <a class="navLink" (click)="grouplink()" >{{"groups"|translate}} </a>
                     </li>
-                    <li class="navItem"><a class="navLink">About </a></li>
+                    <li class="navItem"><a class="navLink">{{"about"|translate}} </a></li>
                     <li class="navItem" (click)="Languages()">
                         <!-- (click)="Languages()"  <a class="navLink">Language </a> -->
 
@@ -114,7 +114,7 @@
                             </mat-select>
                         </mat-form-field> -->
                         <mat-form-field style="max-width: 110px">
-                            <mat-label>{{ language }}</mat-label>
+                            <mat-label> {{"lang"|translate}}</mat-label>
                             <mat-select>
                                 <mat-option (click)="ChangeLang('En')" class="En">
                                     <img with="15" height="10" src="../../../assets/Images/En.jpg" />English</mat-option>
@@ -135,18 +135,18 @@
                           </select>
                         </span>-->
                     </li>
-                    <li class="navItem"><a class="navLink">Help</a></li>
+                    <li class="navItem"><a class="navLink"> {{"help"|translate}}</a></li>
                     <li class="cart">
                         <a routerLink="/cart">
                             <div matBadge="{{cartallcontent}}" matBadgeSize="large" class="demo-section">
-                                Cart
+                              {{"cart"|translate}}
                                 <mat-icon>shopping_cart</mat-icon>
                             </div>
                         </a>
                     </li>
                 </ul>
-                <div class="login ">
-                    <a class="navLink ">Login</a><a class="navLink ">SignIn</a>
+                <div class="login">
+                    <a class="navLink">{{"Login"|translate}}</a><a class="navLink">{{"register"|translate}}</a>
                 </div>
             </div>
         </div>
@@ -154,21 +154,21 @@
 </div>
 
 <!--
-<nav class="navbar navbar-dark bg-primary ">
-    <div class="container ">
-        <a class="navbar-brand ">
-      {{"Sitetitle " | translate }}
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand">
+      {{"Sitetitle" | translate }}
     </a>
-        <span class="form-inline ">
+        <span class="form-inline">
       <select
-        class="form-control "
+        class="form-control"
         #selectedLang
-        (change)="switchLang(selectedLang.value) "
+        (change)="switchLang(selectedLang.value)"
       >
         <option
-          *ngFor="let language of translate.getLangs() "
-          [value]="language "
-          [selected]="language===t ranslate.currentLang "
+          *ngFor="let language of translate.getLangs()"
+          [value]="language"
+          [selected]="language===t ranslate.currentLang"
         >
           {{ language }}
         </option>
@@ -176,36 +176,36 @@
     </span>
             </div>
             </nav>
-            <div class="container ">
+            <div class="container">
                 <form>
-                    <div class="form-group ">
-                        <label>{{"Name " | translate }}</label>
-                        <input type="text " class="form-control " />
-                        <small class="text-danger ">{{"NameError " | translate }}</small>
+                    <div class="form-group">
+                        <label>{{"Name" | translate }}</label>
+                        <input type="text" class="form-control" />
+                        <small class="text-danger">{{"NameError" | translate }}</small>
                     </div>
-                    <div class="form-group ">
-                        <label>{{"Email " | translate }}</label>
-                        <input type="email " class="form-control " />
+                    <div class="form-group">
+                        <label>{{"Email" | translate }}</label>
+                        <input type="email" class="form-control" />
                     </div>
-                    <div class="form-group ">
-                        <label>{{"PhoneNo " | translate }}</label>
+                    <div class="form-group">
+                        <label>{{"PhoneNo" | translate }}</label>
                                           </div>
-                    <div class="form-group ">
-                        <label>{{"Password " | translate }}</label>
-                        <input type="password " class="form-control " />
+                    <div class="form-group">
+                        <label>{{"Password" | translate }}</label>
+                        <input type="password" class="form-control" />
                     </div>
-                    <div class="form-group ">
-                        <label>{{"Bio " | translate }}</label>
-                        <textarea rows="3 " class="form-control "></textarea>
+                    <div class="form-group">
+                        <label>{{"Bio" | translate }}</label>
+                        <textarea rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="form-group form-check ">
-                        <input type="checkbox " class="form-check-input " />
-                        <label class="form-check-label ">{{
-"TermsConditions " | translate
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" />
+                        <label class="form-check-label">{{
+"TermsConditions" | translate
       }}</label>
                     </div>
-                    <button type="submit " class="btn btn-block btn-danger ">
-      {{"Submit " | translate }}
+                    <button type="submit" class="btn btn-block btn-danger">
+      {{"Submit" | translate }}
     </button>
                 </form>
             </div> -->

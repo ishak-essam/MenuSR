@@ -3,6 +3,9 @@ import { ServiceService } from './menu/Services/service.service';
 import { CookieService } from 'ngx-cookie-service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Data } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +19,11 @@ export class AppComponent implements OnInit {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private service: ServiceService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private http: HttpClient,
+    public datepipe: DatePipe,
+    private route: ActivatedRoute
+
   ) {
     // Register the sun and moon icons
     this.matIconRegistry.addSvgIcon(
@@ -40,20 +47,23 @@ export class AppComponent implements OnInit {
     this.darkMode = !this.darkMode;
     // Remove a class from the body element
   }
+
   ngOnInit(): void {
     this.service.getPrimaryColor();
     this.cookie_name = this.cookieService.get('name'); // get the cookie value
     this.all_cookies = this.cookieService.getAll();
-    // localStorage.removeItem("Cart")
-    // console.log(JSON.stringify(localStorage.getItem("Cart"))?.)
+
+    this.service.Carthave();
+
   }
+
   cookie_name = '';
   all_cookies: any = '';
   CategorySearch?: any = 'All';
   CategoryName(event: any) {
     this.CategorySearch = event;
   }
-
+  time2: Data = new Date('00:00:30');
   title = 'MenuSR';
 
   setCookie() {

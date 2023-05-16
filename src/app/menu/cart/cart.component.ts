@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Services/service.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +12,16 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.CartItems = JSON.parse(localStorage.getItem('Cart')!);
     this.GetPriceTotal();
+
+
   }
-  constructor(private service: ServiceService) {}
+  constructor(
+    private service: ServiceService,
+    private location: Location,
+  ) { }
   CartItems: any[] = [];
   TotalPrice: number = 0;
-  total() {}
+  total() { }
   increaseQuantity(i: number) {
     this.CartItems[i].quantity = ++this.CartItems[i].quantity;
     this.GetPriceTotal();
@@ -30,6 +37,8 @@ export class CartComponent implements OnInit {
         this.CartItems[index].Item.price * this.CartItems[index].quantity;
     }
   }
-  PushToOrder(){
+  Back() {
+    this.location.back();
   }
+  PushToOrder() { }
 }

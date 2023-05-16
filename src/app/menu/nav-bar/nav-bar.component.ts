@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ServiceService } from '../Services/service.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,15 +15,19 @@ export class NavBarComponent implements OnInit, OnChanges {
   logo!: string;
   data!: string;
   language!: string;
+  langURL;
   cartallcontent!: number;
   constructor(
     private service: ServiceService,
     public translate: TranslateService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {
     // translate.addLangs(['en', 'ar','fr']);
     translate.addLangs(['En', 'Ar']);
     translate.setDefaultLang('En');
+    this.langURL = this.cookieService.get('Language')
+
   }
   hidden = false;
 
@@ -31,7 +36,7 @@ export class NavBarComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     this.AllData();
-    // this.cartallcontent = this.service.CartContentAll.value.length;
+    document.querySelector('body')!.style.direction = `${this.cookieService.get('direction')}`;
     this.service.myNumberSubject.subscribe((value: any) => {
       this.cartallcontent = value;
     });
@@ -54,7 +59,7 @@ export class NavBarComponent implements OnInit, OnChanges {
       this.Header = this.Header.name;
     });
   }
-  ngOnChanges(): void {}
+  ngOnChanges(): void { }
   isToggled: boolean = false;
   SideBarHide() {
     const Mysidebar: any = document.getElementById('Mysidebar');
@@ -73,21 +78,6 @@ export class NavBarComponent implements OnInit, OnChanges {
     document.body.style.overflow = 'hidden';
   }
   Languages() {
-    // const myElement = document.querySelectorAll(
-    //   '.Lang'
-    // ) as NodeListOf<HTMLElement>;
-
-    // if (myElement[0].style.display === 'flex') {
-    //   {
-    //     myElement.forEach((element) => {
-    //       (element as HTMLElement).style.display = '';
-    //     });
-    //   }
-    // } else if (myElement[0].style.display != 'flex') {
-    //   myElement.forEach((element) => {
-    //     (element as HTMLElement).style.display = 'flex';
-    //   });
-    // }
     this.AllData();
   }
   ChangeLang(lang: any) {
@@ -97,6 +87,9 @@ export class NavBarComponent implements OnInit, OnChanges {
     const myElementEn = document.querySelectorAll(
       '.En'
     ) as NodeListOf<HTMLElement>;
+    this.service.LanguageURL.next(lang)
+
+
     if (lang == 'Ar') {
       myElementEn.forEach((element) => {
         (element as HTMLElement).style.backgroundColor = 'white';
@@ -112,20 +105,37 @@ export class NavBarComponent implements OnInit, OnChanges {
         (element as HTMLElement).style.backgroundColor = 'white';
       });
     }
-    // this.service.setData(lang);
-
+    const bdy = document.querySelector('body');
+    if (lang == 'En') {
+      document.querySelector('body')!.style.direction = 'ltr';
+      this.cookieService.set('direction', "ltr");
+      document.querySelector('svg')!.style.transform = 'rotate(360deg) !important';
+    } else {
+      if (lang == 'Ar') {
+        document.querySelector('body')!.style.direction = 'rtl';
+        this.cookieService.set('direction', "rtl");
+        document.querySelector('svg')!.style.transform = 'rotate(180deg) !important';
+      }
+    }
+    this.language = lang;
     this.translate.use(lang);
+    this.cookieService.set('Language', lang);
+    if (this.cookieService.get('Language') == 'Ar') this.language = 'Arabic';
+    else this.language = 'English';
     const translations = this.translate.getTranslation(lang);
     translations.subscribe((ele) => {
       this.service.setDataTransalte(ele.products);
     });
-
-    this.cookieService.set('Language', lang);
-    if (this.cookieService.get('Language') == 'Ar') this.language = 'Arabic';
-    else this.language = 'English';
+    this.service.getAllItems().subscribe((ele: any) => {
+      this.service.Data.next(ele.products);
+    });
   }
   setCookies() {
     // this.cookieService.set("Language","En")
+  }
+
+  grouplink() {
+    this.router.navigate(['categories']);
   }
   /*
   constructor(public translate: TranslateService) {

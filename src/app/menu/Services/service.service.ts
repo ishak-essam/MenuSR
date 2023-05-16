@@ -16,13 +16,14 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServiceService implements OnChanges {
   private renderer!: Renderer2;
   private primaryColors!: any;
-  private Language = new BehaviorSubject<string>('en');
+  Language = new BehaviorSubject<string>('en');
+  LanguageURL = new BehaviorSubject<[]>([]);
   data$ = this.Language.asObservable();
   Data: any = new BehaviorSubject<any>([]);
   DataTransalte: any = new BehaviorSubject<any>([]);
   CartContentAll: any = new BehaviorSubject<any>([]);
   myNumberSubject: any = new BehaviorSubject<number>(0);
-  private DataTranslateLanguage = new BehaviorSubject<[]>([]);
+  DataTranslateLanguage = new BehaviorSubject<[]>([]);
   constructor(
     private http: HttpClient,
     private rendererFactory: RendererFactory2,
@@ -30,7 +31,14 @@ export class ServiceService implements OnChanges {
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
-
+  Langdef: any = "En"
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.Carthave()
+    this.Carthave()
+    this.LanguageURL.next(this.Langdef)
+  }
   ngOnChanges(): void {
     this.getAllItems();
   }
@@ -42,11 +50,12 @@ export class ServiceService implements OnChanges {
     this.Data.next(value);
   }
   Carthave() {
-    this.myNumberSubject.next(JSON.parse(localStorage.getItem("Cart")!)?.length);
+    this.myNumberSubject.next(JSON.parse(localStorage.getItem("Cart")!).length);
   }
-  getAllItems() {
+  getAllItems(key: number = 102) {
+    this.cookies.set('key', `${key}`);
     return this.http.get(
-      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${this.cookies.get(
+      `http://inv.egypto-soft.com/ihs/test/menu?key=${key}&LANG=${this.cookies.get(
         'Language'
       )}`
     );
@@ -73,11 +82,11 @@ export class ServiceService implements OnChanges {
         const primaryColord = rootStyles.getPropertyValue('--primary');
       });
   }
-  GetItems(lang: string) {
-    this.getAllItems();
-
+  GetItems(lang?: string, key: number = 102) {
+    // this.getAllItems();
+    this.cookies.set('key', `${key}`);
     return this.http.get(
-      `http://inv.egypto-soft.com/ihs/test/menu?key=102&LANG=${lang}`
+      `http://inv.egypto-soft.com/ihs/test/menu?key=${key}&LANG=${lang}`
     );
   }
   PostItem(item: any) {
@@ -86,4 +95,5 @@ export class ServiceService implements OnChanges {
       item
     );
   }
+
 }
